@@ -52,6 +52,20 @@ export default function Home() {
       >
         Start Progress
       </Button>
+      {/* New code */}
+      <Button
+        type="primary"
+        disabled={!busy}
+        onClick={async () => {
+          const { appWindow } = await import("@tauri-apps/api/window");
+          await appWindow.emit("STOP");
+          setProgress(0);
+          setBusy(false);
+        }}
+      >
+        Stop Progress
+      </Button>
+      {/* / New code */}
     </div>
   );
 }
